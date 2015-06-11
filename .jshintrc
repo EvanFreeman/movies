@@ -1,0 +1,11 @@
+{
+  "undef": true,
+  "unused": true,
+  "predef": [
+    "define",
+    "console",
+    "require",
+    "window",
+    "alert"
+    ]
+}

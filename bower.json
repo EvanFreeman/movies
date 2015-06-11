@@ -1,0 +1,28 @@
+{
+  "name": "Movie_3",
+  "version": "0.0.0",
+  "authors": [
+    "Evan Freeman <Evan.Freeman@healthrageous.com>"
+  ],
+  "description": "Movie sample",
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "underscore": "~1.6.0",
+    "backbone": "~1.1.2",
+    "requirejs": "~2.1.11",
+    "bootstrap": "~3.1.1",
+    "text": "~2.0.14"
+  }
+}
