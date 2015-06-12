@@ -10,7 +10,10 @@ define(function (require) {
       //  result in a bad ref instead do this:
       //el: '#maincontainer',
       template: template,
+      views: {},
+      url: '',
       initialize: function () {
+        this.collection.bind('destroy', this.removeOne, this);
         this.collection.bind('reset', this.render, this);
         this.collection.bind('add', this.addOne, this);
       },
@@ -25,12 +28,12 @@ define(function (require) {
       },
       demoCreateOne: function () {
         this.collection.create({
-          'Id': 'BVP3s',
-          'Name': 'Lord of the Rings ',
-          'AverageRating': 4.3,
-          'ReleaseYear': 2003,
-          'Url': 'http://www.netflix.com/.....',
-          'Rating': 'PG-13'
+          'id': 'BVP3s',
+          'name': 'Lord of the Rings ',
+          'averageRating': 4.3,
+          'releaseYear': 2003,
+          'url': 'http://www.netflix.com/.....',
+          'rating': 'PG-13'
         }); //notice that I add it to the collection and the view 
             //fires the addOne function because I bound the add of 
             //the collection to trigger the render. Cool.
@@ -46,10 +49,12 @@ define(function (require) {
       addOne: function (model) {
         console.log('addOne');
         var view = new Movie({ model: model });
+        this.views[model.id] = view;
         $('tbody', this.el).append(view.render());
       },
-      removeOne: function (id) {
-        this.collection.remove(id);
+      removeOne: function (model) {
+        console.log('removeOne');
+        this.views[model.id].$el.remove();
       }
     });
 });

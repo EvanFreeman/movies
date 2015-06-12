@@ -31,7 +31,9 @@ app.get('/', function (req, res) {
 app.get('/movies', movieapp.findAll);
 app.get('/movies/:id', movieapp.findById);
 app.post('/movies', movieapp.addMovie);
+app.put('/movies/:id', movieapp.addMovie);
 app.get('/filldb', movieapp.populateDb);
+app.delete('/movies/:id', movieapp.remove);
 
 app.listen(app.get('port'));
 console.log('Movie application server listening on port ' + app.get('port'));

@@ -21,7 +21,7 @@ define(function(require) {
       this.$el.html(this.template);
 
       var sb = new Sidebar({el: '#sidebar'});
-      sb.render();
+     // sb.render();
 
       var ph = new PageHeader({ el: '#page-header'});
       ph.render();

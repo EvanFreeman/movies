@@ -17,7 +17,6 @@ db.open(function (err, db) {
 });
 
 exports.findAll = function (req, res) {
-  console.log('here we are');
   db.collection('movies', function (err, collection) {
     collection.find().toArray(function (err, items) {
       res.json(items);
@@ -37,7 +36,6 @@ exports.findById = function (req, res) {
 
 exports.addMovie = function(req, res) {
   var movie = req.body;
-  console.log();
   console.log('Adding movie: ' + JSON.stringify(movie));
   db.collection('movies', function(err, collection) {
     collection.insert(movie, { safe: true }, function(err, result) {
@@ -51,9 +49,18 @@ exports.addMovie = function(req, res) {
   });
 };
 
+exports.remove = function(req, res) {
+  var id = req.params.id;
+  console.log('Deleteing movie: ', id);
+  db.collection('movies', function(err, collection) {
+    collection.remove({ id: id }, function(err, result) {
+      res.json(result);
+    });
+  });
+};
+
 exports.populateDb = function (req, res) {
   var movies = require('./data/movies');
-  console.log('here');
   db.collection('movies', function (err, collection) {
     collection.insert(movies, { safe: true }, function (err, result) { 
       res.json(result);

@@ -14,7 +14,17 @@ define(function (require) {
                                             //underscore object to do the 
                                             //templateing stuf.
     initialize: function () {
-      _.bindAll(this, 'render');
+      _.bindAll(this, 'render', 'remove');
+    },
+    events: {
+      'click a#delete': 'remove'
+    },
+    remove: function () {
+      var self = this;
+      this.model.destroy({
+        success: function() {
+        }
+      });
     },
     render: function () {
       return $(this.el).append(this.template(this.model.toJSON()));
